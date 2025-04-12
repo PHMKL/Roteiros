@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+)
+
+// essa funcao recebe um numero e retorna se ele e "Par" ou "Impar"
+
+func ParOuImpar(n int) string {
+	if n%2 == 0 {
+		return "Par"
+	} else {
+		return "Impar"
+	}
+}
+
+func main() {
+	var numero int
+
+	// pede para o usuario digitar um numero
+
+	fmt.Print("Digite um numero inteiro: ")
+	fmt.Scanln(&numero)
+
+	// usa a funcao e guarda o resultado
+
+	resultado := ParOuImpar(numero)
+
+	// mostra se o numero e par ou impar
+ 
+	fmt.Printf("O numero %d e %s.\n", numero, resultado)
+}
