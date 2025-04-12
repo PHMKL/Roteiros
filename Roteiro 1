@@ -1,3 +1,4 @@
+Ex 1
 package main
 
 import (
@@ -29,4 +30,77 @@ func main() {
 	// mostra se o numero e par ou impar
  
 	fmt.Printf("O numero %d e %s.\n", numero, resultado)
+}
+
+ex 2
+package main
+
+import (
+	"fmt"
+)
+
+// essa funcao soma todos os numeros de 1 ate o numero que o usuario digitar
+func SomaAte(n int) int {
+	soma := 0
+
+	// faz um "contador" que vai de 1 ate o numero digitado
+	for i := 1; i <= n; i++ {
+		soma += i
+	}
+
+	return soma
+}
+
+func main() {
+	var n int
+
+	// pede um numero positivo para o usuario
+	fmt.Print("Digite um numero inteiro positivo: ")
+	fmt.Scanln(&n)
+
+	// chama a funcao e guarda o resultado
+	total := SomaAte(n)
+
+	// mostra o resultado da soma
+	fmt.Printf("A soma de todos os numeros de 1 ate %d e: %d\n", n, total)
+}
+
+Ex 3
+
+package main
+
+import (
+	"fmt"
+)
+
+// essa funcao classifica uma nota de acordo com a pontuacao
+func ClassificarNota(nota int) string {
+	switch {
+	case nota >= 9 && nota <= 10:
+		return "Excelente"
+	case nota >= 7 && nota <= 8:
+		return "Bom"
+	case nota >= 5 && nota <= 6:
+		return "Regular"
+	case nota >= 3 && nota <= 4:
+		return "Ruim"
+	case nota >= 0 && nota <= 2:
+		return "Muito Ruim"
+	default:
+		return "Nota invalida. Digite de 0 a 10."
+	}
+}
+
+func main() {
+	var nota int
+
+	// pede para o usuario digitar uma nota
+	fmt.Print("Digite uma nota de 0 a 10: ")
+	fmt.Scanln(&nota)
+
+	// Usa a funcao para classificar a nota
+	resultado := ClassificarNota(nota)
+
+	// mostra o resultado da classificacao
+	fmt.Printf("A nota %d foi classificada como: %s\n", nota, resultado)
 }
