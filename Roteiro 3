@@ -1,0 +1,92 @@
+// Ex 1.1
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	// criamos uma variavel chamada b e colocamos o valor 10.5 nela
+	var b float64 = 10.5
+
+	// criamos um ponteiro chamado p2 que aponta para b
+	// isso quer dizer que p2 "enxerga" e consegue mudar o valor de b
+	var p2 *float64 = &b
+
+	// mostramos o valor original de b
+	fmt.Println("valor original de b:", b)
+
+	// agora vamos mudar o valor de b usando o ponteiro p2
+	*p2 = 25.75
+
+	// mostramos o novo valor de b
+	// mesmo sem mexer diretamente em b, o valor mudou porque usamos o ponteiro
+	fmt.Println("novo valor de b (usando o ponteiro):", b)
+}
+
+//Ex 2
+package main
+
+import (
+	"fmt"
+)
+
+// cada tarefa tem um nome e sabe qual e a proxima tarefa
+type Tarefa struct {
+	nome    string
+	proxima *Tarefa
+}
+
+var inicio *Tarefa = nil // comeca sem nenhuma tarefa
+
+// adiciona uma nova tarefa no final da lista
+func adicionar(nome string) {
+	nova := &Tarefa{nome: nome}
+
+	if inicio == nil {
+		inicio = nova // se for a primeira, vira o comeco
+	} else {
+		atual := inicio
+		for atual.proxima != nil {
+			atual = atual.proxima
+		}
+		atual.proxima = nova // coloca no final
+	}
+}
+
+// tira a primeira tarefa da lista
+func remover() {
+	if inicio != nil {
+		inicio = inicio.proxima
+	} else {
+		fmt.Println("nao tem tarefa pra remover")
+	}
+}
+
+// mostra todas as tarefas
+func mostrar() {
+	if inicio == nil {
+		fmt.Println("lista vazia")
+		return
+	}
+
+	atual := inicio
+	for atual != nil {
+		fmt.Println("-", atual.nome)
+		atual = atual.proxima
+	}
+}
+
+func main() {
+	adicionar("estudar")
+	adicionar("comer")
+	adicionar("dormir")
+
+	fmt.Println("tarefas:")
+	mostrar()
+
+	remover()
+
+	fmt.Println("\ndepois de remover uma:")
+	mostrar()
+}
