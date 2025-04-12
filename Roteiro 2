@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+)
+
+// aqui a gente cria um "modelo" chamado Produto
+// esse modelo guarda 3 coisas: nome, preco e quantidade
+type Produto struct {
+	Nome      string    // O nome do produto (ex: "Camiseta")
+	Preco     float64   // O valor do produto (ex: 49.90)
+	Quantidade int      // Quantos produtos tem (ex: 10)
+}
+
+func main() {
+	// aqui a gente cria um produto de verdade, usando o modelo acima
+	produto := Produto{
+		Nome:      "Camiseta",   // Colocamos o nome
+		Preco:     49.90,        // Colocamos o preco
+		Quantidade: 10,          // Colocamos a quantidade
+	}
+
+	// agora vamos mostrar esse produto na tela
+	fmt.Println("Produto cadastrado:")
+	fmt.Println("Nome:", produto.Nome)             // Mostra o nome
+	fmt.Println("Preco:", produto.Preco)           // Mostra o preco
+	fmt.Println("Quantidade:", produto.Quantidade) // Mostra a quantidade
+}
