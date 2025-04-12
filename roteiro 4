@@ -1,0 +1,39 @@
+//Ex1
+package main
+
+import (
+	"fmt"
+)
+
+// essa funcao verifica se uma palavra e um palindromo usando uma pilha
+func isPalindromo(palavra string) bool {
+	var pilha []rune // criamos a pilha (uma lista de letras)
+
+	// empilhamos cada letra da palavra
+	for _, letra := range palavra {
+		pilha = append(pilha, letra)
+	}
+
+	var invertida string // aqui vamos guardar a palavra ao contrario
+
+	// desempilhamos as letras, ou seja, tiramos do final pro começo
+	for len(pilha) > 0 {
+		n := len(pilha) - 1              // pegamos a ultima letra
+		invertida += string(pilha[n])   // adicionamos essa letra na nova palavra
+		pilha = pilha[:n]               // removemos a letra da pilha
+	}
+
+	// comparamos a palavra original com a invertida
+	return palavra == invertida
+}
+
+func main() {
+	palavra := "arara"
+
+	// chamamos a funcao e mostramos se e palindromo ou nao
+	if isPalindromo(palavra) {
+		fmt.Println(palavra, "e um palindromo")
+	} else {
+		fmt.Println(palavra, "nao e um palindromo")
+	}
+}
